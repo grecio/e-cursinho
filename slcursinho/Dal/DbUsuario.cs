@@ -43,7 +43,7 @@ namespace Dal
             {
                 if (usuario.IdUsuario > 0)
                 {
-                    return cnn.Execute("update usuario set (nome, login, senha) values (@nome, @login, @senha) where idusuario = @idusuario") > 0;
+                    return cnn.Execute("update usuario set nome=@nome, login=@login, senha=@senha where idusuario = @idusuario", usuario) > 0;
                 }
 
                 return cnn.Execute("insert into usuario (nome, login, senha) values (@nome, @login, @senha)", usuario) > 0;

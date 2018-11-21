@@ -10,6 +10,7 @@
     <link type="text/css" href="Content/StyleSheet.css" media="screen" rel="stylesheet" />
     <link type="text/css" href="Content/grid.css" media="screen" rel="stylesheet" />
     <script src="Scripts/jquery-2.1.1.js"></script>
+    <script src="Scripts/jquery-meio-mask-mascaras.js"></script>
     <script src="Scripts/jquery.meiomask.js"></script>
     <script src="Scripts/global.js"></script>
     <!-- styles for this example page only -->

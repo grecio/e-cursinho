@@ -126,6 +126,7 @@
     <Content Include="FrmAluno.aspx" />
     <Content Include="FrmContasPagar.aspx" />
     <Content Include="FrmContasReceber.aspx" />
+    <Content Include="FrmCurso.aspx" />
     <Content Include="FrmGrupoUsuario.aspx" />
     <Content Include="FrmInstrutor.aspx" />
     <Content Include="FrmMatricula.aspx" />
@@ -152,10 +153,15 @@
     <Content Include="painel.htm" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\forms.js" />
+    <Content Include="Scripts\global.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-meio-mask-mascaras.js" />
+    <Content Include="Scripts\jquery.meiomask.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -236,6 +242,13 @@
     </Compile>
     <Compile Include="FrmContasReceber.aspx.designer.cs">
       <DependentUpon>FrmContasReceber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCurso.aspx.cs">
+      <DependentUpon>FrmCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCurso.aspx.designer.cs">
+      <DependentUpon>FrmCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrmGrupoUsuario.aspx.cs">
       <DependentUpon>FrmGrupoUsuario.aspx</DependentUpon>
