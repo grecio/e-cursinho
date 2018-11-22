@@ -3,7 +3,7 @@
     <table cellspacing="1" style="width: 92%">
         <tr>
             <td class="linha">
-                <asp:Label ID="Label1" runat="server" CssClass="tit" Text="Acadêmico &gt;Instrutores"></asp:Label>
+                <asp:Label ID="Label1" runat="server" CssClass="tit" Text="Instrutores"></asp:Label>
             </td>
         </tr>
         <tr>

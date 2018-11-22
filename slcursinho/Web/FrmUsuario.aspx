@@ -4,7 +4,7 @@
     <table cellspacing="1" style="width: 92%">
         <tr>
             <td class="linha">
-                <asp:Label ID="Label1" runat="server" CssClass="tit" Text="Administrativo &gt; Usuários"></asp:Label>
+                <asp:Label ID="Label1" runat="server" CssClass="tit" Text="Usuários"></asp:Label>
             </td>
         </tr>
         <tr>
