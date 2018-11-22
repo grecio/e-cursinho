@@ -47,5 +47,17 @@ namespace Web
             //    Response.Redirect("logout.aspx");
             //}
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+
+            if (Session["UsuarioLogado"] == null)
+            {
+                Response.Redirect("logout.aspx");
+            }
+
+        }
     }
 }

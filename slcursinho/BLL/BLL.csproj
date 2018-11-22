@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BpCurso.cs" />
+    <Compile Include="BpInstrutor.cs" />
+    <Compile Include="BpTurma.cs" />
+    <Compile Include="BpTurmaStatus.cs" />
     <Compile Include="BpUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

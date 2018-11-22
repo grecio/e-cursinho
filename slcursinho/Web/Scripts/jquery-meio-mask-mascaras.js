@@ -9,7 +9,7 @@ Em: Abril de 2014
 
 $(function () {
 
-    $(".mask-Data").setMask({ mask: '99/99/9999', autoTab: false });
+    $(".mask-data").setMask({ mask: '99/99/9999', autoTab: false });
     //$(".mask-Data").datepicker({ format: 'dd/mm/yyyy' });
 
     $(".mask-DataHora").setMask({ mask: '99/99/9999 99:99', autoTab: false });
@@ -60,7 +60,6 @@ $(function () {
 
     $(".mask-cnpj").setMask({ mask: '99.999.999/9999-99' });
     $(".mask-cpf").setMask({ mask: '999.999.999-99' });
-    $(".mask-data").setMask({ mask: '99/99/9999' });
     $(".mask-hora").setMask({ mask: '99:99' });
     $(".mask-cep").setMask({ mask: '99999-999' });
     $('.mask-val').setMask({ mask: '99,999.999.999.999', type: 'reverse', defaultValue: '+000' },

@@ -121,7 +121,6 @@ namespace Web
             catch (Exception ex)
             {
                 JavaScript.ShowMsg(Page, ex.Message);
-                throw;
             }
 
         }

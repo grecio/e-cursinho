@@ -12,20 +12,20 @@
     vetMenus(0, 0) = "Acadêmico"
     Redim vetSubMenus(5, 2)
 		
-    vetSubMenus(0, 0) = "Alunos"
-    vetSubMenus(0, 1) = "FrmAluno.aspx"
+    vetSubMenus(0, 0) = "Matriculas"
+    vetSubMenus(0, 1) = "FrmMatricula.aspx"
 
-    vetSubMenus(1, 0) = "Instrutores"
-    vetSubMenus(1, 1) = "FrmInstrutor.aspx"  
 
-    vetSubMenus(2, 0) = "Cursos"
-    vetSubMenus(2, 1) = "FrmCurso.aspx"
+    vetSubMenus(1, 0) = "Cursos"
+    vetSubMenus(1, 1) = "FrmCurso.aspx"
    
-    vetSubMenus(3, 0) = "Turmas"
-    vetSubMenus(3, 1) = "FrmTurma.aspx"
+    vetSubMenus(2, 0) = "Turmas"
+    vetSubMenus(2, 1) = "FrmTurma.aspx"
    
-    vetSubMenus(4, 0) = "Matriculas"
-    vetSubMenus(4, 1) = "FrmMatricula.aspx"
+
+    vetSubMenus(3, 0) = "Instrutores"
+    vetSubMenus(3, 1) = "FrmInstrutor.aspx"  
+
 
     vetMenus(0, 1) = vetSubMenus		
 
