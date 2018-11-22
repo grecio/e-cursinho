@@ -21,10 +21,10 @@ namespace Dal
                     "th.idturma, " +
                     "dia, " +
                     "hora_entrada as horaentrada, " +
-                    "hora_saida as horasaida" +
+                    "hora_saida as horasaida " +
                     "from turma_horario  th " +
                     "inner join turma t on t.idturma = th.idturma " +
-                    "where th.idturma = @idturma; ", new { idturma = idturma });
+                    "where th.idturma = @idturma ", new { idturma });
 
             }
 

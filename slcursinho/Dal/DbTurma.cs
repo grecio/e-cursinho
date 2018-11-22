@@ -61,7 +61,22 @@ namespace Dal
         {
             using (var cnn = new MySqlConnection(Settings.Default.MySqlConnectionSetting))
             {
-                return cnn.Execute("delete from turma where idturma = @idturma", new { idturma = id }) > 0;
+
+                cnn.Open();
+
+                var afetadas = 0;
+
+                using (var transaction = cnn.BeginTransaction())
+                {
+
+                    cnn.Execute("delete from turma_horario where idturma = @id", new { id }, transaction);
+                    cnn.Execute("delete from turma_instrutor where idturma = @id", new { id }, transaction);
+                    afetadas = cnn.Execute("delete from turma where idturma = @id", new { id }, transaction);
+
+                    transaction.Commit();
+                }
+
+                return afetadas > 0;
             }
         }
     }

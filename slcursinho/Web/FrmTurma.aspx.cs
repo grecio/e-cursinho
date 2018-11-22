@@ -17,13 +17,15 @@ namespace Web
         {
             lista = 0,
             form = 1,
-            instrutor = 2
+            instrutor = 2,
+            horarios = 3
         }
 
         private readonly BLL.BpCurso bpCurso;
         private readonly BLL.BpTurma bpTurma;
         private readonly BLL.BpTurmaStatus bpTurmaStatus;
         private readonly BLL.BpTurmaInstrutor bpTurmaInstrutor;
+        private readonly BLL.BpTurmaHorario bpTurmaHorario;
         private readonly BLL.BpInstrutor bpInstrutor;
 
 
@@ -36,7 +38,7 @@ namespace Web
                 {
                     long id = 0;
                     long.TryParse(ViewState["IdTurma"].ToString(), out id);
-                    return id; 
+                    return id;
                 }
 
                 return 0;
@@ -51,6 +53,7 @@ namespace Web
             bpTurma = new BLL.BpTurma();
             bpTurmaStatus = new BLL.BpTurmaStatus();
             bpTurmaInstrutor = new BLL.BpTurmaInstrutor();
+            bpTurmaHorario = new BLL.BpTurmaHorario();
             bpInstrutor = new BLL.BpInstrutor();
         }
 
@@ -59,16 +62,31 @@ namespace Web
             try
             {
                 ExibirPainel(painel.lista);
-                Listar();               
+                Listar();
                 PreencherCursos();
                 PreencherStatus();
                 PreencherInstrutores();
-
+                PreencherDias();
             }
             catch (Exception ex)
             {
                 JavaScript.ShowMsg(this.Page, ex.Message);
             }
+        }
+
+        private void PreencherDias()
+        {
+            ddlDia.Items.AddRange(new ListItem[]
+            {
+                new ListItem() { Text = "Domingo", Value = "DOM" },
+                new ListItem() { Text = "Segunda-feira", Value = "SEG" },
+                new ListItem() { Text = "Terça-feira", Value = "TER" },
+                new ListItem() { Text = "Quarta-feira", Value = "QUA" },
+                new ListItem() { Text = "Quinta-feira", Value = "QUI" },
+                new ListItem() { Text = "Sexta-feira", Value = "SEX" },
+                new ListItem() { Text = "Sábado", Value = "SAB" }
+            });
+
         }
 
         private void PreencherInstrutores()
@@ -112,7 +130,7 @@ namespace Web
         private void Ler()
         {
 
-           
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -132,13 +150,13 @@ namespace Web
 
         private void Novo()
         {
-           
-         
+
+
         }
 
         private void Excluir()
         {
-          
+            bpTurma.Excluir(IdTurma);
         }
 
         private void AdicionarTurmaInstrutor()
@@ -150,14 +168,21 @@ namespace Web
                 IdInstrutor = Convert.ToInt64(ddlInstrutor.SelectedValue)
 
             });
-    
+
         }
 
         private void ListarTurmaInstrutor()
         {
             grdTurmaInstrutorList.DataSource = bpTurmaInstrutor.Listar(IdTurma);
             grdTurmaInstrutorList.DataBind();
-;        }
+        }
+
+        private void ListarTurmaHorario()
+        {
+            grdTurmaHorarioList.DataSource = bpTurmaHorario.Listar(IdTurma);
+            grdTurmaHorarioList.DataBind();
+        }
+
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -236,6 +261,12 @@ namespace Web
                 var lkbSel = e.Row.FindControl("lkbSel") as LinkButton;
                 var lkbRemover = e.Row.FindControl("lkbRemover") as LinkButton;
                 var lkbInstrutures = e.Row.FindControl("lkbInstrutures") as LinkButton;
+                var lkbhorarios = e.Row.FindControl("lkbhorarios") as LinkButton;
+
+                if (lkbhorarios != null)
+                {
+                    lkbhorarios.CommandArgument = dto.IdTurma.ToString();
+                }
 
                 if (lkbInstrutures != null)
                 {
@@ -289,7 +320,22 @@ namespace Web
 
                     ExibirPainel(painel.instrutor);
                     ListarTurmaInstrutor();
-                    
+
+                }
+                else if (e.CommandName.ToLowerInvariant() == "horarios")
+                {
+                    IdTurma = Convert.ToInt64(e.CommandArgument.ToString());
+
+                    var turmaDto = bpTurma.Ler(IdTurma);
+
+                    if (turmaDto != null)
+                    {
+                        lblTurmaHorario_Turma.Text = turmaDto.Descricao.ToUpperInvariant();
+                        lblTurmaHorario_Curso.Text = turmaDto.Curso.ToUpperInvariant();
+                    }
+
+                    ExibirPainel(painel.horarios);
+                    ListarTurmaHorario();
                 }
             }
             catch (Exception ex)
@@ -324,7 +370,7 @@ namespace Web
                 if (lkbTurmaInstrutorRemover != null)
                 {
                     lkbTurmaInstrutorRemover.CommandArgument = dto.IdTurmaInstrutor.ToString();
-                    JavaScript.AddConfirmSubmit(lkbTurmaInstrutorRemover, MSG_EXCLUIR);                
+                    JavaScript.AddConfirmSubmit(lkbTurmaInstrutorRemover, MSG_EXCLUIR);
                 }
             }
         }
@@ -366,6 +412,90 @@ namespace Web
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             ExibirPainel(painel.lista);
+        }
+
+        protected void grdTurmaHorarioList_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                var dto = e.Row.DataItem as TurmaHorarioDto;
+
+                var lkbTurmaHorarioRemover = e.Row.FindControl("lkbTurmaHorarioRemover") as LinkButton;
+
+                if (lkbTurmaHorarioRemover != null)
+                {
+                    lkbTurmaHorarioRemover.CommandArgument = dto.IdTurmaHorario.ToString();
+                    JavaScript.AddConfirmSubmit(lkbTurmaHorarioRemover, MSG_EXCLUIR);
+
+                }
+            }
+        }
+
+        protected void grdTurmaHorarioList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdTurmaHorarioList.PageIndex = e.NewPageIndex;
+                ListarTurmaHorario();
+            }
+            catch (Exception ex)
+            {
+
+                JavaScript.ShowMsg(Page, ex.Message);
+            }
+        }
+
+        protected void btnTurmaHorarioVoltar_Click(object sender, EventArgs e)
+        {
+            ExibirPainel(painel.lista);
+        }
+
+        protected void btnTurmaHorarioAdicionar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bpTurmaHorario.Inserir(new TurmaHorario()
+                {
+                    IdTurmaHorario = 0,
+                    IdTurma = IdTurma,
+                    Dia = ddlDia.SelectedValue,
+                    HoraEntrada = txtHoraInicial.Text,
+                    HoraSaida = txtHoraFinal.Text
+
+                });
+
+                ListarTurmaHorario();
+            }
+            catch (Exception ex)
+            {
+
+                JavaScript.ShowMsg(Page, ex.Message);
+            }
+        }
+
+        protected void grdTurmaHorarioList_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+
+                if (e.CommandName.ToLowerInvariant() == "excluir")
+                {
+                    long id = 0;
+
+                    long.TryParse(e.CommandArgument.ToString(), out id);
+
+                    bpTurmaHorario.Remover(id);
+                    ListarTurmaHorario();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                JavaScript.ShowMsg(Page, ex.Message);
+            }
         }
     }
 }
