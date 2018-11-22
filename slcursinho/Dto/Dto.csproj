@@ -45,6 +45,8 @@
     <Compile Include="InstrutorDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TurmaDto.cs" />
+    <Compile Include="TurmaHorarioDto.cs" />
+    <Compile Include="TurmaInstrutorDto.cs" />
     <Compile Include="TurmaStatusDto.cs" />
     <Compile Include="UsuarioDto.cs" />
   </ItemGroup>

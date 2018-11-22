@@ -64,6 +64,8 @@
     <Compile Include="DbCurso.cs" />
     <Compile Include="DbInstrutor.cs" />
     <Compile Include="DbTurma.cs" />
+    <Compile Include="DbTurmaHorario.cs" />
+    <Compile Include="DbTurmaInstrutor.cs" />
     <Compile Include="DbTurmaStatus.cs" />
     <Compile Include="DbUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

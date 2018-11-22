@@ -155,6 +155,93 @@
                         </table>
 
                     </asp:View>
+                    <asp:View ID="View3" runat="server">
+                        <table cellspacing="1" style="width: 100%">
+                            <tr>
+                                <td class="linha" colspan="3">
+                                    <asp:Label ID="Label25" runat="server" CssClass="lbl" Font-Bold="True" Text="Dados do curso"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <table cellspacing="1" style="width: 100%">
+                                        <tr>
+                                            <td style="width: 15%;">
+                                                <asp:Label ID="Label22" runat="server" CssClass="lbl" Font-Bold="False" Text="Turma:" Width="100px"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblTurma" runat="server" CssClass="lbl" Font-Bold="False"></asp:Label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="Label24" runat="server" CssClass="lbl" Font-Bold="False" Text="Curso:" Width="100px"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblCurso" runat="server" CssClass="lbl" Font-Bold="False"></asp:Label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="linha" colspan="3">
+                                    <asp:Label ID="Label23" runat="server" CssClass="lbl" Font-Bold="True" Text="Dados do instrutor"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 15%;">
+                                    <asp:Label ID="Label21" runat="server" CssClass="lbl" Text="Instrutor:" Width="100px"></asp:Label>
+                                </td>
+                                <td style="width:100%">
+                                    <asp:DropDownList ID="ddlInstrutor" runat="server" Width="98%">
+                                    </asp:DropDownList>
+                                </td>
+                                <td style="width: 1%;">
+                                    <asp:Button ID="btnInstrutorInserir" runat="server" CssClass="btn" OnClick="btnInstrutorInserir_Click" Text=" &gt;&gt; " Width="40px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="2">
+                                    <asp:GridView ID="grdTurmaInstrutorList" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CssClass="Grid" DataKeyNames="IdTurmaInstrutor" EmptyDataText="Nenhum registro encontrado" Width="100%" OnPageIndexChanging="grdTurmaInstrutorList_PageIndexChanging" OnRowCommand="grdTurmaInstrutorList_RowCommand" OnRowDataBound="grdTurmaInstrutorList_RowDataBound">
+                                        <AlternatingRowStyle CssClass="GridAltItem" />
+                                        <Columns>
+                                            <asp:BoundField DataField="nomeInstrutor" HeaderText="Instrutor" SortExpression="nomeInstrutor">
+                                            <HeaderStyle HorizontalAlign="Left" />
+                                            <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField ShowHeader="False">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lkbTurmaInstrutorRemover" runat="server" CausesValidation="False" CommandName="Excluir" Text="Remover"></asp:LinkButton>
+                                                </ItemTemplate>
+                                                <HeaderStyle Width="7%" />
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+                                        <HeaderStyle BackColor="#1E2F5E" CssClass="GridHeader" Font-Bold="True" ForeColor="#CCCCFF" />
+                                        <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
+                                        <RowStyle BackColor="White" CssClass="GridItem" ForeColor="#003399" />
+                                        <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                                        <SortedAscendingCellStyle BackColor="#EDF6F6" />
+                                        <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
+                                        <SortedDescendingCellStyle BackColor="#D6DFDF" />
+                                        <SortedDescendingHeaderStyle BackColor="#002876" />
+                                    </asp:GridView>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="2">
+                                    <asp:Button ID="btnVoltar" runat="server" CssClass="btn" OnClick="btnVoltar_Click" Text="Voltar" />
+                                </td>
+                            </tr>
+                        </table>
+                        </asp:View>
                 </asp:MultiView>
             </td>
         </tr>

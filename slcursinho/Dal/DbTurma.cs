@@ -18,10 +18,23 @@ namespace Dal
             using (var cnn = new MySqlConnection(Settings.Default.MySqlConnectionSetting))
             {
                 return cnn.Query<TurmaDto>("select turma.idturma, turma.idcurso, curso.curso, " +
+                    "turmastatus.idturmastatus, turmastatus.turmastatus, turma.turma as descricao, " +
+                    "turma.datainicio, turma.datafim, " +
+                    "turma.capacidade  from turma inner join curso on curso.idcurso = turma.idcurso " +
+                    "inner join turmastatus on turmastatus.idturmastatus = turma.idturmastatus");
+            }
+        }
+
+        public TurmaDto Ler(long id)
+        {
+            using (var cnn = new MySqlConnection(Settings.Default.MySqlConnectionSetting))
+            {
+                return cnn.QueryFirstOrDefault<TurmaDto>("select turma.idturma, turma.idcurso, curso.curso, " +
                     "turmastatus.idturmastatus, turmastatus.turmastatus, turma.turma as descricao," +
                     "turma.datainicio, turma.datafim, " +
                     "turma.capacidade  from turma inner join curso on curso.idcurso = turma.idcurso " +
-                    "inner join turmastatus on turmastatus.idturmastatus = turma.idturmastatus; ");
+                    "inner join turmastatus on turmastatus.idturmastatus = turma.idturmastatus " +
+                    "where turma.idturma= @id", new { id });
             }
         }
 

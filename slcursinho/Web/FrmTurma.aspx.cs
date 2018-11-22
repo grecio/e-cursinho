@@ -1,4 +1,5 @@
-﻿using Dto;
+﻿using Domain;
+using Dto;
 using Framework.Concerns;
 using Framework.Web;
 using System;
@@ -15,12 +16,17 @@ namespace Web
         private enum painel
         {
             lista = 0,
-            form = 1
+            form = 1,
+            instrutor = 2
         }
 
         private readonly BLL.BpCurso bpCurso;
         private readonly BLL.BpTurma bpTurma;
         private readonly BLL.BpTurmaStatus bpTurmaStatus;
+        private readonly BLL.BpTurmaInstrutor bpTurmaInstrutor;
+        private readonly BLL.BpInstrutor bpInstrutor;
+
+
 
         private long IdTurma
         {
@@ -44,6 +50,8 @@ namespace Web
             bpCurso = new BLL.BpCurso();
             bpTurma = new BLL.BpTurma();
             bpTurmaStatus = new BLL.BpTurmaStatus();
+            bpTurmaInstrutor = new BLL.BpTurmaInstrutor();
+            bpInstrutor = new BLL.BpInstrutor();
         }
 
         private void InicializarForm()
@@ -51,15 +59,24 @@ namespace Web
             try
             {
                 ExibirPainel(painel.lista);
-                Listar();
+                Listar();               
                 PreencherCursos();
                 PreencherStatus();
+                PreencherInstrutores();
 
             }
             catch (Exception ex)
             {
                 JavaScript.ShowMsg(this.Page, ex.Message);
             }
+        }
+
+        private void PreencherInstrutores()
+        {
+            ddlInstrutor.DataSource = bpInstrutor.Listar().OrderBy(item => item.Instrutor);
+            ddlInstrutor.DataTextField = "Instrutor";
+            ddlInstrutor.DataValueField = "IdInstrutor";
+            ddlInstrutor.DataBind();
         }
 
         private void PreencherStatus()
@@ -123,6 +140,24 @@ namespace Web
         {
           
         }
+
+        private void AdicionarTurmaInstrutor()
+        {
+            bpTurmaInstrutor.Inserir(new TurmaInstrutor()
+            {
+                IdTurmaInstrutor = 0,
+                IdTurma = IdTurma,
+                IdInstrutor = Convert.ToInt64(ddlInstrutor.SelectedValue)
+
+            });
+    
+        }
+
+        private void ListarTurmaInstrutor()
+        {
+            grdTurmaInstrutorList.DataSource = bpTurmaInstrutor.Listar(IdTurma);
+            grdTurmaInstrutorList.DataBind();
+;        }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -193,13 +228,19 @@ namespace Web
 
         protected void grdList_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == System.Web.UI.WebControls.DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
                 var dto = e.Row.DataItem as TurmaDto;
 
                 var lkbSel = e.Row.FindControl("lkbSel") as LinkButton;
                 var lkbRemover = e.Row.FindControl("lkbRemover") as LinkButton;
+                var lkbInstrutures = e.Row.FindControl("lkbInstrutures") as LinkButton;
+
+                if (lkbInstrutures != null)
+                {
+                    lkbInstrutures.CommandArgument = dto.IdTurma.ToString();
+                }
 
                 if (lkbSel != null)
                 {
@@ -234,12 +275,97 @@ namespace Web
                     Listar();
                     ExibirPainel(painel.lista);
                 }
+                else if (e.CommandName.ToLowerInvariant() == "instrutores")
+                {
+                    IdTurma = Convert.ToInt64(e.CommandArgument.ToString());
+
+                    var turmaDto = bpTurma.Ler(IdTurma);
+
+                    if (turmaDto != null)
+                    {
+                        lblTurma.Text = turmaDto.Descricao.ToUpperInvariant();
+                        lblCurso.Text = turmaDto.Curso.ToUpperInvariant();
+                    }
+
+                    ExibirPainel(painel.instrutor);
+                    ListarTurmaInstrutor();
+                    
+                }
             }
             catch (Exception ex)
             {
 
                 JavaScript.ShowMsg(Page, ex.Message);
             }
+        }
+
+        protected void btnInstrutorInserir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AdicionarTurmaInstrutor();
+                ListarTurmaInstrutor();
+            }
+            catch (Exception ex)
+            {
+
+                JavaScript.ShowMsg(Page, ex.Message);
+            }
+        }
+
+        protected void grdTurmaInstrutorList_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var dto = e.Row.DataItem as TurmaInstrutorDto;
+
+                var lkbTurmaInstrutorRemover = e.Row.FindControl("lkbTurmaInstrutorRemover") as LinkButton;
+
+                if (lkbTurmaInstrutorRemover != null)
+                {
+                    lkbTurmaInstrutorRemover.CommandArgument = dto.IdTurmaInstrutor.ToString();
+                    JavaScript.AddConfirmSubmit(lkbTurmaInstrutorRemover, MSG_EXCLUIR);                
+                }
+            }
+        }
+
+        protected void grdTurmaInstrutorList_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.ToLowerInvariant() == "excluir")
+                {
+                    long id = 0;
+
+                    long.TryParse(e.CommandArgument.ToString(), out id);
+
+                    bpTurmaInstrutor.Remover(id);
+                    ListarTurmaInstrutor();
+                }
+            }
+            catch (Exception ex)
+            {
+                JavaScript.ShowMsg(Page, ex.Message);
+            }
+        }
+
+        protected void grdTurmaInstrutorList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grdTurmaInstrutorList.PageIndex = e.NewPageIndex;
+                ListarTurmaInstrutor();
+            }
+            catch (Exception ex)
+            {
+
+                JavaScript.ShowMsg(Page, ex.Message);
+            }
+        }
+
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            ExibirPainel(painel.lista);
         }
     }
 }

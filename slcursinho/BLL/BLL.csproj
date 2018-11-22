@@ -44,6 +44,8 @@
     <Compile Include="BpCurso.cs" />
     <Compile Include="BpInstrutor.cs" />
     <Compile Include="BpTurma.cs" />
+    <Compile Include="BpTurmaHorario.cs" />
+    <Compile Include="BpTurmaInstrutor.cs" />
     <Compile Include="BpTurmaStatus.cs" />
     <Compile Include="BpUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

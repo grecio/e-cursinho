@@ -24,6 +24,11 @@ namespace BLL
             return db.Listar();
         }
 
+        public TurmaDto Ler(long id)
+        {
+            return db.Ler(id);
+        }
+
         public bool Salvar(Turma turma)
         {
             Validador.Validar(!string.IsNullOrWhiteSpace(turma.Descricao), "Informe a turma.");

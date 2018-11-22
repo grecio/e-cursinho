@@ -45,6 +45,8 @@
     <Compile Include="Instrutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Turma.cs" />
+    <Compile Include="TurmaHorario.cs" />
+    <Compile Include="TurmaInstrutor.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
