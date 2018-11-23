@@ -204,6 +204,7 @@ namespace Web
             {
                 var dataini = DateTime.MinValue;
                 var datafim = DateTime.MinValue;
+
                 long idcurso = 0;
                 int capacidade = 0;
 
