@@ -64,6 +64,16 @@
     padding: 3px 0px 3px 10px;
 }
 
+.txt-dis {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+    height: 15px;
+    border: 1px solid #294B76;
+    background: #d6dddc url(imgs/botoes/bk-txt.jpg) bottom left repeat-x;
+    padding: 3px 0px 3px 10px;
+}
+
 .txt-focus {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;

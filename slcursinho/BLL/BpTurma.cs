@@ -24,6 +24,11 @@ namespace BLL
             return db.Listar();
         }
 
+        public IEnumerable<TurmaDto> Listar(long idcurso)
+        {
+            return db.Listar(idcurso);
+        }
+
         public TurmaDto Ler(long id)
         {
             return db.Ler(id);

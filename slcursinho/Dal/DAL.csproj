@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="DbCurso.cs" />
     <Compile Include="DbInstrutor.cs" />
+    <Compile Include="DbMatricula.cs" />
     <Compile Include="DbTurma.cs" />
     <Compile Include="DbTurmaHorario.cs" />
     <Compile Include="DbTurmaInstrutor.cs" />

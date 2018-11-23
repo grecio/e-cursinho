@@ -25,6 +25,19 @@ namespace Dal
             }
         }
 
+        public IEnumerable<TurmaDto> Listar(long idcurso)
+        {
+            using (var cnn = new MySqlConnection(Settings.Default.MySqlConnectionSetting))
+            {
+                return cnn.Query<TurmaDto>("select turma.idturma, turma.idcurso, curso.curso, " +
+                    "turmastatus.idturmastatus, turmastatus.turmastatus, turma.turma as descricao, " +
+                    "turma.datainicio, turma.datafim, " +
+                    "turma.capacidade  from turma inner join curso on curso.idcurso = turma.idcurso " +
+                    "inner join turmastatus on turmastatus.idturmastatus = turma.idturmastatus " +
+                    "where turma.idcurso = @id", new { id=idcurso});
+            }
+        }
+
         public TurmaDto Ler(long id)
         {
             using (var cnn = new MySqlConnection(Settings.Default.MySqlConnectionSetting))

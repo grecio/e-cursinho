@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace Framework.Util
 {
-    public class Util
+    public static class Util
     {
 
         #region Estuturas

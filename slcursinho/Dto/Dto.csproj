@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CursoDto.cs" />
     <Compile Include="InstrutorDto.cs" />
+    <Compile Include="MatriculaDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TurmaDto.cs" />
     <Compile Include="TurmaHorarioDto.cs" />
