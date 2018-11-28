@@ -292,13 +292,13 @@ namespace Web {
         protected global::System.Web.UI.WebControls.DropDownList ddlEstadocivilAlunoResp;
         
         /// <summary>
-        /// Label25 control.
+        /// Label60 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label25;
+        protected global::System.Web.UI.WebControls.Label Label60;
         
         /// <summary>
         /// txtProfissaoAlunoResp control.
@@ -308,6 +308,15 @@ namespace Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProfissaoAlunoResp;
+        
+        /// <summary>
+        /// Label61 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label61;
         
         /// <summary>
         /// Label54 control.

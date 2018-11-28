@@ -14,7 +14,7 @@
                         <table style="width: 100%;">
                             <tr>
                                 <td>
-                                    <asp:GridView ID="grdList" runat="server" AllowPaging="True" Width="100%" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CssClass="Grid" DataKeyNames="IdMatricula" EmptyDataText="Nenhum registro encontrado" OnPageIndexChanging="grdList_PageIndexChanging" OnRowCommand="grdList_RowCommand" OnRowDataBound="grdList_RowDataBound">
+                                    <asp:GridView ID="grdList" runat="server" AllowPaging="True" Width="100%" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CssClass="Grid" DataKeyNames="IdMatricula" EmptyDataText="Nenhum registro encontrado">
                                         <AlternatingRowStyle CssClass="GridAltItem" />
                                         <Columns>
                                             <asp:BoundField DataField="matricula" HeaderText="Matrícula" SortExpression="matricula">
@@ -131,40 +131,38 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
+                                                    <td style="width: 15%;">
                                                         <asp:Label ID="Label22" runat="server" CssClass="lbl" Text="CPF:" Width="70px"></asp:Label>
                                                     </td>
                                                     <td>
-                                                        <table cellspacing="1" style="width: 100%">
-                                                            <tr>
-                                                                <td style="width: 1%;">
-                                                                    <asp:TextBox ID="txtCpfAlunoResp" runat="server" CssClass="txt mask-numero" Width="100px"></asp:TextBox>
-                                                                </td>
-                                                                <td style="width: 1%;">
-                                                                    <asp:Label ID="Label26" runat="server" CssClass="lbl" Text="RG:" Width="70px"></asp:Label>
-                                                                </td>
-                                                                <td style="width: 1%;">
-                                                                    <asp:TextBox ID="txtRgAlunoResp" runat="server" CssClass="txt mask-numero" Width="100px"></asp:TextBox>
-                                                                </td>
-                                                                <td style="width: 1%;">
-                                                                    <asp:Label ID="Label27" runat="server" CssClass="lbl" Text="Sexo:" Width="70px"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:DropDownList ID="ddlSexoAlunoResp" runat="server" Width="190px">
-                                                                        <asp:ListItem Value="1">Masculino</asp:ListItem>
-                                                                        <asp:ListItem Value="2">Feminino</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
+                                                        <asp:TextBox ID="txtCpfAlunoResp" runat="server" CssClass="txt mask-numero" Width="100px"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
+                                                    <td style="width: 15%;">
+                                                        <asp:Label ID="Label26" runat="server" CssClass="lbl" Text="RG:" Width="70px"></asp:Label>
+                                                    </td>
                                                     <td>
+                                                        <asp:TextBox ID="txtRgAlunoResp" runat="server" CssClass="txt mask-numero" Width="100px"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 15%;">
+                                                        <asp:Label ID="Label27" runat="server" CssClass="lbl" Text="Sexo:" Width="70px"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="ddlSexoAlunoResp" runat="server" CssClass="ddl" Width="110px">
+                                                            <asp:ListItem Value="1">Masculino</asp:ListItem>
+                                                            <asp:ListItem Value="2">Feminino</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 15%;">
                                                         <asp:Label ID="Label21" runat="server" CssClass="lbl" Text="Data Nasc.:" Width="100px"></asp:Label>
                                                     </td>
                                                     <td>
-                                                        <table cellspacing="1" style="width: 100%">
+                                                        <table cellspacing="1" style="width: 565px">
                                                             <tr>
                                                                 <td style="width: 1%;">
                                                                     <asp:TextBox ID="txtDatanascAlunoResp" runat="server" CssClass="txt mask-data" Width="100px"></asp:TextBox>
@@ -173,7 +171,7 @@
                                                                     <asp:Label ID="Label23" runat="server" CssClass="lbl" Text="Naturalidade:" Width="70px"></asp:Label>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:TextBox ID="txtNaturalidadeAlunoResp" runat="server" CssClass="txt mask-data" Width="98%"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtNaturalidadeAlunoResp" runat="server" CssClass="txt mask-data" Width="100%"></asp:TextBox>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -184,23 +182,28 @@
                                                         <asp:Label ID="Label24" runat="server" CssClass="lbl" Text="Estado Civil:" Width="100px"></asp:Label>
                                                     </td>
                                                     <td>
-                                                        <table cellspacing="1" style="width: 100%">
+                                                        <table cellspacing="1" style="width: 565px">
                                                             <tr>
                                                                 <td style="width: 1%;">
-                                                                    <asp:DropDownList ID="ddlEstadocivilAlunoResp" runat="server" Width="110px">
+                                                                    <asp:DropDownList ID="ddlEstadocivilAlunoResp" runat="server" CssClass="ddl" Width="112px">
                                                                         <asp:ListItem Value="1">Solteiro(a)</asp:ListItem>
                                                                         <asp:ListItem Value="2">Casado(a)</asp:ListItem>
                                                                         <asp:ListItem Value="3">Outro</asp:ListItem>
                                                                     </asp:DropDownList>
                                                                 </td>
                                                                 <td style="width: 1%;">
-                                                                    <asp:Label ID="Label25" runat="server" CssClass="lbl" Text="Profissão:" Width="70px"></asp:Label>
+                                                                    <asp:Label ID="Label60" runat="server" CssClass="lbl" Text="Profissão:" Width="70px"></asp:Label>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:TextBox ID="txtProfissaoAlunoResp" runat="server" CssClass="txt mask-data" Width="98%"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtProfissaoAlunoResp" runat="server" CssClass="txt mask-data" Width="100%"></asp:TextBox>
                                                                 </td>
                                                             </tr>
                                                         </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <asp:Label ID="Label61" runat="server" CssClass="lbl" Font-Bold="True" Text="Endereço:"></asp:Label>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -232,7 +235,7 @@
                                                         <asp:Label ID="Label57" runat="server" CssClass="lbl" Text="Cidade:" Width="100px"></asp:Label>
                                                     </td>
                                                     <td>
-                                                        <table cellspacing="1" style="width: 100%">
+                                                        <table cellspacing="0" style="width: 565px">
                                                             <tr>
                                                                 <td style="width: 1%">
                                                                     <asp:TextBox ID="txtAlunoResponsavelCidade" runat="server" CssClass="txt" Width="400px"></asp:TextBox>
@@ -568,25 +571,19 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="height: 19px">&nbsp;</td>
                                 <td style="height: 19px">
-                                    <table cellspacing="1" style="width: 100%">
-                                        <tr>
-                                            <td style="width: 1%;">
-                                                <asp:Label ID="Label15" runat="server" CssClass="lbl" Text="Inscritos:" Width="50px"></asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtTotalInscritos" runat="server" CssClass="txt-dis" Width="98%"></asp:TextBox>
-                                            </td>
-                                            <td style="width: 1%">
-                                                <asp:Label ID="Label16" runat="server" CssClass="lbl" Text="Vagas:" Width="50px"></asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtTotalVagas" runat="server" CssClass="txt-dis" Width="98%"></asp:TextBox>
-                                            </td>
-                                           
-                                        </tr>
-                                    </table>
+                                    <asp:Label ID="Label15" runat="server" CssClass="lbl" Text="Inscritos:" Width="50px"></asp:Label>
+                                </td>
+                                <td style="height: 19px">
+                                    <asp:TextBox ID="txtTotalInscritos" runat="server" CssClass="txt-dis" Width="100px"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 19px">
+                                    <asp:Label ID="Label16" runat="server" CssClass="lbl" Text="Vagas:" Width="80px"></asp:Label>
+                                </td>
+                                <td style="height: 19px">
+                                    <asp:TextBox ID="txtTotalVagas" runat="server" CssClass="txt-dis" Width="100px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -596,8 +593,8 @@
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>
-                                    <asp:Button ID="btnSalvar" runat="server" CssClass="btn" OnClick="btnSalvar_Click" Text="Salvar" />
-                                    &nbsp;&nbsp;<asp:Button ID="btnCancelar" runat="server" CssClass="btn" OnClick="btnCancelar_Click" Text="Cancelar" />
+                                    <asp:Button ID="btnSalvar" runat="server" CssClass="btn"  Text="Salvar" />
+                                    &nbsp;&nbsp;<asp:Button ID="btnCancelar" runat="server" CssClass="btn" Text="Cancelar" />
                                 </td>
                             </tr>
                         </table>
